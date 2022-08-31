@@ -1,0 +1,713 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Lezione 01</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="d54203ec-2b8b-4d7e-957e-f551d80b742d" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/webb1.jpg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">1️⃣</span></div><h1 class="page-title">Lezione 01</h1></header><div class="page-body"><p id="67291358-9029-4b9b-8663-700c7120a9b3" class="">In questa lezione inizieremo a parlare dei limiti dei computer. </p><p id="45687e30-28df-45df-a0e5-37a48627b96c" class="">Partiamo osservando una linea retta.</p><figure id="0da0fa57-aa64-4199-b3e0-1f21bcedde80" class="image"><a href="img/retta.jpg"><img style="width:382px" src="img/retta.jpg"/></a></figure><p id="23831f06-4799-4369-a93d-6b7332381657" class="">Una <strong>retta</strong> è un’<em>ente geometrico fondamentale </em>costituito da un insieme <strong>infinito</strong> di punti, che possiamo rappresentare sul piano cartesiano utilizzando tre differenti equazioni: l’equazione implicita della retta, l’equazione esplicita della retta e l’equazione della retta passante per due punti:</p><div id="011fe3b9-cc3b-4c43-a5c1-5a8c17b1f8d1" class="column-list"><div id="57728908-d63c-424c-b4ce-aaeea5655142" style="width:100%" class="column"><p id="483466a3-7ee8-4967-88f7-e6bcd9e1dc25" class=""><strong>Equazione implicita
+</strong></p><hr id="9f4a352d-c80e-413e-a285-3b88666000cc"/><p id="ac115fb4-585b-4bf2-bad0-1249006b6ab6" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">ax + by + c = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></span><span>﻿</span></span></p><p id="355bcf05-03dd-4e52-bf17-1d4ab03abe48" class="block-color-gray">(con <em>a</em>, <em>b </em>e <em>c</em> numeri reali (<em>a, b</em> non contemporaneamente uguali a zero)</p></div><div id="1ac2c83f-8cbe-41d2-8ab6-bd1d3b5ee1c7" style="width:100%" class="column"><p id="a1a53a87-b9a3-489e-bf58-f813bb0de5a2" class=""><strong>Equazione esplicita
+</strong></p><hr id="feb2f3c5-409b-4776-9ba2-3fd3281db7ae"/><p id="9135affe-935f-4c63-bdb5-4c5bb3242686" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>m</mi><mi>x</mi><mo>+</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">y = mx + q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span></span><span>﻿</span></span></p><p id="592813be-ea08-45b7-825b-614475fa2f19" class="block-color-gray">(con m coefficiente angolare)</p><p id="06370126-272e-4345-90e5-f9db0ea692d5" class="">
+</p></div><div id="327a21b1-0f26-4594-97fb-7aacfc9a34d1" style="width:100%" class="column"><p id="8fb6fae7-cddf-47e6-95ae-3d938c2d6307" class=""><strong>Retta passante per due punti</strong></p><hr id="b08d4fdc-f662-4415-b9a0-c8d6f28ad454"/><p id="7f38b109-b56a-4a7a-9928-7968abbf33a7" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle scriptlevel="0" displaystyle="false"><mfrac><mrow><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac></mstyle><mo>=</mo><mstyle scriptlevel="0" displaystyle="false"><mfrac><mrow><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\text{\(\frac {x-x_1} {x_2-x_1}\)} = \text{\(\frac {y-y_1} {y_2-y_1}\)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.263531em;vertical-align:-0.44509999999999994em;"></span><span class="mord text"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8184309999999999em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4101em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44509999999999994em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.335547em;vertical-align:-0.481108em;"></span><span class="mord text"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.854439em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.481108em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span><span>﻿</span></span></p><p id="2cc55589-baec-4e29-9013-249f63b590aa" class="block-color-gray">(dove i due punti sono <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_1, y_1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> e <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_2,y_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>)</p><p id="5edcdd1c-03dd-4219-8570-0e1da4aad032" class="">
+</p></div></div><p id="be207071-2aca-4c24-8d91-16be4c50c60a" class=""></p><p id="554b666b-1bae-413e-88ae-b978597ba229" class="block-color-gray_background">🤖 Ma come possiamo disegnare una retta sullo schermo di un computer ❓</p><p id="75e351a1-9742-49b1-979b-f02d5ecf0b3f" class="">
+</p><p id="29ae289b-f3e9-460d-9370-6b3c185b0cef" class="">La retta è un’entità <em>infinita,</em> mentre lo schermo di un computer è un dispositivo con dimensioni <em>finite.
+</em>Quindi, se vogliamo disegnare una <span style="border-bottom:0.05em solid">linea retta</span> sullo schermo di un computer dovremmo<strong>approssimarla </strong>con un <span style="border-bottom:0.05em solid">segmento</span> formato da un insieme di <strong>pixel</strong>!
+</p><p id="41bd8897-c935-4fbb-af63-40781f419fe0" class="">La <strong>trasformazione</strong> di una forma in una<strong>immagine costituita da pixel</strong> è detta <mark class="highlight-red"><strong>rasterizzazione</strong></mark>.
+</p><p id="1eb0006e-5ed1-4222-9a34-7c325f985943" class=""></p><div id="b61b1bc0-02d3-49d9-be27-d7a642093e89" class="column-list"><div id="ee8ef603-93b4-4022-bcaf-cec6888a6cc7" style="width:100%" class="column"><h3 id="62572c67-0854-456e-ae27-7be72b279b6e" class="block-color-orange">Esercizio 01</h3></div><div id="c58344fd-f23f-4fe9-a3d8-362848f68386" style="width:100%" class="column"><p id="dd2ce628-5ece-4025-947a-5f11c611ea49" class="">La seguente griglia (<a id="2e826ec6-95fd-403d-b761-f92505e0e695">Figura 1</a>) di dimensioni 20 x 20 <strong>pixel </strong><em>(quadratini)</em> rappresenta un (<em>piccolissimo</em>) schermo dove l’<strong>origine delle coordinate di riferimento (0,0) </strong>è posizionato nel pixel in alto a sinistra.</p></div></div><ul id="d7dd9289-1149-4b6e-a006-499a4c39da6e" class="bulleted-list"><li style="list-style-type:disc">Disegnate il segmento con estremi A e B, annerendo i pixel che vi sembrano più opportuni (la prima coordinata dei punti indica le ascisse, la seconda coordinata indica le ordinate): A = (2, 7) B = (18, 14)</li></ul><ul id="dc15364b-d0a7-4b05-83d8-87655856ae29" class="bulleted-list"><li style="list-style-type:disc">Quando avete finito, dividetevi in gruppi da due o tre persone e confrontate le rette disegnate. Sono tutte uguali?</li></ul><ul id="f805a7b8-968d-4e2d-bed7-df6c27618e72" class="bulleted-list"><li style="list-style-type:disc">Esistono dei casi particolari in cui le linee possono essere disegnate in modo semplice e non ambiguo?</li></ul><figure id="2e826ec6-95fd-403d-b761-f92505e0e695" class="image"><a href="img/grid_01.png"><img style="width:1180px" src="img/grid_01.png"/></a><figcaption>Figura 1: schema per l’esercizio 01.</figcaption></figure><hr id="1bb612c7-570a-488c-8c45-4343246dd03f"/><div id="fc323ed6-4446-490c-865f-2b5440ea5a0f" class="column-list"><div id="c750cf1f-fef9-4225-8cf3-d5c095a24fa7" style="width:100%" class="column"><h3 id="44e3dde8-187a-4779-b45c-aaebe7309847" class=""><mark class="highlight-orange">Esercizio 01 +</mark></h3></div><div id="3dd28c27-e56c-4e94-a58d-4017da857df4" style="width:100%" class="column"><p id="15b5cf68-45f0-4d8d-b98f-acd5793420ae" class="">
+</p><p id="a0ca5842-ffbb-414c-bd8f-d6613e188132" class="">Osservando la tua retta, prova a scrivere lo pseudo codice che ne permette la realizzazione.</p><p id="b24939e4-cd29-478c-8bfd-e3a9a735764b" class="">E’ utilizzabile per disegnare altre rette?</p></div></div><hr id="d24b39e8-33f6-4ac3-bdec-f28fe28670cb"/><p id="a66e69d6-566b-4a7e-8bee-7cd5ed4ecd1d" class="">Una possibile soluzione al problema della rappresentazione delle linee rette in uno schermo attraverso i pixel, sfrutta l’<strong>equazione esplicita della retta</strong>.  Dati i due punti A e B, possiamo ricavare il valore di <em>m </em>e <em>q</em>:<div class="indented"><p id="02c491a4-d05d-4d63-9ef3-649c1a9b3f54" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mstyle scriptlevel="0" displaystyle="false"><mfrac><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>−</mo><msub><mi>y</mi><mn>2</mn></msub></mrow><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">m = \text{\(\frac {y_1-y_2} {x_1-x_2}\)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.2995389999999998em;vertical-align:-0.44509999999999994em;"></span><span class="mord text"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.854439em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44509999999999994em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span><span>﻿</span></span>                             <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><msub><mi>y</mi><mn>1</mn></msub><mo>−</mo><mstyle scriptlevel="0" displaystyle="false"><mfrac><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>−</mo><msub><mi>y</mi><mn>2</mn></msub></mrow><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></mfrac></mstyle><msub><mi>x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">q = y_1 - \text{\(\frac {y_1-y_2} {x_1-x_2}\)}x_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7777700000000001em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.2995389999999998em;vertical-align:-0.44509999999999994em;"></span><span class="mord text"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.854439em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44509999999999994em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span></p></div></p><p id="f370fdbc-9b15-4c20-a0c3-566f738ef944" class="">Tramite l’equazione esplicita della retta, per ogni valore di <em>x </em>compreso tra i due punti A e B, si calcola il valore corrispondete della <em>y, </em>che ci indica, una volta arrotondato a numero intero, le coordinate del pixel da colorare.</p><p id="27291baf-6b8b-4a53-92d5-ccecb61e9123" class="">Ecco la procedura:</p><pre id="3bf84b37-db6a-4bbf-a458-76c0a205266a" class="code"><code>INPUT: due punti (x1, y1), (x2, y2)
+
+m = (y1 - y2) / (x1 - x2)
+q = y1 - m * x1
+per ogni x tra min(x1, x2) e max(x1, x2)
+		y = m*x + q
+		colora il pixel (x, round(y))</code></pre><div id="fba9e0ba-a9ea-437f-b7bf-742126cbfec8" class="column-list"><div id="b6c1d04a-879f-4768-88a9-12a0c87dbec2" style="width:100%" class="column"><h3 id="a3b2503d-03d2-4503-851c-a0a6b8b82bde" class="block-color-orange">Esercizio 02</h3></div><div id="ed153aad-7345-4772-8f55-4c5e7e9669b2" style="width:100%" class="column"><p id="2b2dc905-3a83-4f28-a9ab-9cf620e8d48b" class="">
+</p><p id="73cc6e6f-c771-4acf-81ba-90ede79e714a" class="">Esiste almeno un caso particolare in cui questo algoritmo non funziona come desiderato?</p><ul id="95e42268-a029-4541-aa10-421dd84ba489" class="toggle"><li><details><summary><mark class="highlight-gray"><em>Suggerimento</em></mark></summary><p id="8c4d70e3-de59-4ca8-9ae1-fabefe68837e" class="">Come viene disegnata il segmento con estremi (2, 18) e (5, 5)?</p></details></li></ul></div></div><hr id="03b40213-0fe9-4ad0-9422-d725a43e5272"/><div id="10a64c8e-1b50-44fb-8de2-e04d52f6308c" class="column-list"><div id="f2001444-2bee-4d06-a699-f9ac93354be0" style="width:100%" class="column"><h3 id="8932decf-c8ad-44e4-88c4-0255808d2ed0" class=""><mark class="highlight-orange">Esercizio 02 +</mark></h3></div><div id="3b140b1f-64ba-48b7-929a-2c187495ff39" style="width:100%" class="column"><p id="62dbf11a-cd8f-446e-ad44-f942b86d794a" class="">
+</p><p id="6cca51c3-9a6b-44d1-8f1b-aff1ae61144d" class="">Scrivi, in Python, un programma che calcola e stampa le coordinate dei pixel che l’algoritmo <em>Naive line-drawing </em>(pseudo codice presentato sopra) andrebbe a disegnare. </p><p id="89fd4b97-ef70-4680-9f55-94f484f26c99" class="">Esegui il codice sui punti di estremi (2, 7) e (18, 14) (come nell’esercizio 1), e confrontali con la linea che avevi disegnato!</p></div></div><p id="41dc35e5-d8b8-418c-b163-df28570708ce" class="">
+</p><hr id="9275da17-d087-443f-900e-243f81a6595d"/><p id="fc0b8d46-7104-4a19-a7b0-1e06967c2011" class="">
+</p><p id="a5f33c9c-0a39-49c6-933a-91d0521595ad" class="">In tutti i casi in cui il coefficiente angolare della retta <em>m </em>è maggiore di 1, l’algoritmo <em>Naive line-drawing </em>non funziona come desiderato: lascia troppi spazi bianchi! </p><p id="55ebf627-a7f5-43b5-872c-ce366e6f9f0a" class="">Per questo motivo sono stati sviluppati altri algoritmi per la rasterizzazione di linee, tra cui uno dei più utilizzati è l’<strong>algoritmo di Bresenham </strong>:</p><pre id="8507a946-4c00-42b5-b5e1-a3ddf68e3e88" class="code"><code>INPUT: due punti (x1, y1), (x2, y2)
+
+a = 2 * (y2 - y1)
+b = a - 2 * (x2 - x1) 
+p = a - (x2 - x1)
+
+colora il pixel iniziale
+per ogni x tra min(x1, x2)+1 e max(x1, x2)
+	se p &lt; 0:
+		colora il pixel di ascissa x sulla stessa linea del pixel precedente
+		p = p + a
+	altrimenti: 
+		colora il pixel di ascissa x con ordinata incrementata rispetto al pixel precedente
+		p = p + b
+</code></pre><p id="85aae2be-99e7-454c-b9d5-6e75e7f6b480" class="">Oltre ad essere più corretto, l’algoritmo di Bresenham è più <strong>efficiente</strong>, perché le somme sono più semplici rispetto a moltiplicazioni e divisioni (usate, invece, nel ciclo dell’algoritmo <em>naive</em>).</p><p id="f008c57b-fd06-4a9a-b5ba-047dd14a2e69" class="">Per fare altri due nomi di algoritmi di rasterizzazione di linee: <a href="https://it.wikipedia.org/wiki/Algoritmo_DDA">algoritmo DDA</a> e algoritmo della linea di Xiaolin Wu (che introduce l’effetto “sfumato” nelle linee, detto <em>antialiasing</em>).</p><div id="25b20037-890c-47f0-8242-91696e7d3e5d" class="column-list"><div id="f16e160a-1e2f-4c08-8071-1b2106c95e9c" style="width:50%" class="column"><figure id="f6607884-bf55-4584-83fb-59216f37fb66" class="image"><a href="img/bresenham.png"><img style="width:1006px" src="img/bresenham.png"/></a><figcaption>Figura 2: Esempio di linea disegnata con l’algoritmo di Bresenham.
+<mark class="highlight-gray"><em>Credits</em></mark><mark class="highlight-gray">: Dnttllthmmnm</mark><mark class="highlight-gray"><a href="https://commons.wikimedia.org/wiki/File:LineBresenham.gif"> (1)</a></mark><mark class="highlight-gray">, </mark><mark class="highlight-gray"><a href="https://commons.wikimedia.org/wiki/File:LineXiaolinWu.gif">(2)</a></mark></figcaption></figure></div><div id="ea900fd7-a02e-494d-963e-b7a85eaa6b95" style="width:50%" class="column"><figure id="d45c752b-f8ee-4298-af7e-94fd751ff4e7" class="image"><a href="img/xiaolin_wu.png"><img style="width:1024px" src="img/xiaolin_wu.png"/></a><figcaption>Figura 3: Esempio di linea disegnata con l’algoritmo di Xiaolin Wu.</figcaption></figure><p id="1a755901-08fc-4a8b-8d22-9190a56b99f5" class="">
+</p></div></div><p id="f41db2dc-8d58-4b41-804a-26c757029ae6" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="4aeb963d-8b3d-465e-a538-1ac5edbce039"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><em>Approfondimento -</em>  per una ulteriore spiegazione del metodo di Bresenham, leggete questo paragrafo: <a href="https://www.csfieldguide.org.nz/en/chapters/computer-graphics/drawing-lines-and-circles/#bresenham-s-line-algorithm">https://www.csfieldguide.org.nz/en/chapters/computer-graphics/drawing-lines-and-circles/#bresenham-s-line-algorithm</a></div></figure><p id="afed908f-11c3-420a-9c5d-a4ebc93d00f8" class="">
+</p><h3 id="e0fb93c4-c5e7-45aa-b43d-9f0c67d45211" class="">📎 Cosa possiamo ricavare dall’esempio della rasterizzazione delle linee?</h3><p id="b25f9468-28ed-4e17-b68d-78ff3536bbb3" class="">I computer hanno dei <strong>limiti</strong>! </p><p id="e19cc5dd-6a02-4516-9123-a4cb9093c7f4" class="">Così come abbiamo incontrato i limiti nella rappresentazione grafica, li troviamo anche nella rappresentazione dei <strong>numeri</strong> e nei <strong>calcoli</strong> numerici. <div class="indented"><ol type="1" id="197f33bb-efd8-40f0-8192-0fa170ae9714" class="numbered-list" start="1"><li>Abbiamo visto che le linee rette, che sono infinite, devono essere approssimate da segmenti finiti. Allo stesso modo <span style="border-bottom:0.05em solid">non tutti i numeri possono essere rappresentati dai computer</span>, ma devono essere <strong>approssimati</strong>. Infatti, i computer hanno un <strong>spazio di memoria finita</strong> per i dati!</li></ol><ol type="1" id="38e3ab5e-4cda-4df5-99c3-48a1724096aa" class="numbered-list" start="2"><li>Alcuni problemi possono essere risolti con <strong>algoritmi differenti</strong>, e la rasterizzazione delle linee ne è un esempio. Il problema della rasterizzazione è un problema di approssimazione, e metodi differenti portano a soluzioni finali leggermente diverse le une dalle altre, <span style="border-bottom:0.05em solid">più o meno vicine alla soluzione ideale</span>.</li></ol><ol type="1" id="8bfbbcab-98dc-4426-89d7-38dffb63a9b2" class="numbered-list" start="3"><li>Il tempo di calcolo di un problema dipende da quante operazioni  bisogna eseguire. Vorremmo trovare le soluzioni più veloci (o comunque eseguibili in <em>tempo finito!</em>).</li></ol></div></p><p id="249ecfeb-d2e1-4721-aac7-630394a97100" class="">
+</p><hr id="1845e087-8af0-4718-a984-6adbde85f545"/><h3 id="886ddf71-5ab0-4722-b36d-628643164c91" class="block-color-blue">Cos’è il calcolo numerico?</h3><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="d44bd3dd-6837-4fe4-8795-0ba2f84064c4"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Il <strong>calcolo numerico</strong> è la disciplina matematica che studia i metodi per risolvere problemi matematici tramite algoritmi computazionali.</div></figure><p id="5ec95607-cbb7-4c0b-b1d5-a6373c28d67b" class="">I metodi del calcolo numerico possono essere suddivisi in due categorie: </p><ol type="1" id="bd2237f0-ac84-4bf2-9920-624d7bf74239" class="numbered-list" start="1"><li><strong>Metodi diretti</strong>: risolvono i problemi ottenendo la <span style="border-bottom:0.05em solid">soluzione esatta</span>, applicando un <span style="border-bottom:0.05em solid">numero finito di operazioni</span> (ad esempio risolvere in modo esatto un sistema di equazioni lineari);</li></ol><ol type="1" id="74936a16-999e-4930-aeed-8d9f1e28871b" class="numbered-list" start="2"><li><strong>Metodi iterativo</strong>: risolvono i problemi tramite <span style="border-bottom:0.05em solid">successive approssimazioni</span>, che portano ad ottenere una soluzione anch’essa approssimata.</li></ol><p id="9ccc1d46-5101-42e0-86b5-69080bf45035" class="">Il concetto di <mark class="highlight-yellow_background"><strong>approssimazione</strong></mark><strong> </strong>è fondamentale nel calcolo numerico. Perché accontentarsi di una soluzione approssimata?<div class="indented"><blockquote id="ebf0e17d-2848-4dc9-96f7-130e1773890b" class="">Perché alcuni problemi non hanno soluzioni analitiche (come il <em>problema dei tre corpi, </em><a id="e83523c8-bbd1-4427-bac3-e4553fc09a0f">Figura 4</a>), oppure perché calcolare la soluzione esatta richiederebbe troppo tempo (ad esempio calcolare il valore di una funzione molto complessa).</blockquote><figure id="e83523c8-bbd1-4427-bac3-e4553fc09a0f" class="image" style="text-align:center"><a href="img/Three-body_Problem_Animation_with_COM.gif"><img style="width:300px" src="img/Three-body_Problem_Animation_with_COM.gif"/></a><figcaption>Figura 4: Approssimazione delle traiettorie di tre corpi soggetti all’attrazione gravitazionale reciproca (detto “problema dei tre corpi”).
+<mark class="highlight-gray"><em>Credits</em></mark><mark class="highlight-gray">: </mark><mark class="highlight-gray"><a href="https://it.wikipedia.org/wiki/File:Three-body_Problem_Animation_with_COM.gif">Dnttllthmmnm</a></mark></figcaption></figure></div></p><p id="f20f5056-cfc1-499a-aadd-d26f42f2520b" class="">
+</p><hr id="52eaf97e-84f7-4a5a-b42d-bcf453ca5eb8"/><p id="7ec2e8cf-79c0-4aae-aafc-0338550154cd" class="">🔌 Il calcolo numerico nasce molto prima dell’avvento dei computer! Perché i metodi del calcolo numerico permettevano di facilitare i calcoli a mano. Per esempio, pensate ad Archimede: fu il primo a definire un metodo per approssimare scientificamente il valore di Pi greco. </p><hr id="0853a455-f28d-4bbc-89f6-5910471b285d"/><blockquote id="e465e7dc-96bf-48ec-ae8e-6d16d4e3972b" class="">Dopo questa breve descrizione di cos’è il calcolo numerico, quali potrebbero essere, secondo voi, le sue applicazioni? 
+Scrivetele qui: <a href="http://scrumblr.ca/applicazioni_del_calcolo_numerico0822">http://scrumblr.ca/applicazioni_del_calcolo_numerico0822</a></blockquote><p id="c4b12335-f8b6-4742-9b71-fb836901c661" class="">
+</p><figure id="52bcc022-1f36-4675-91b3-db8ce269c733" class="link-to-page"><a href="applicazioniCN.html"><span class="icon">💫</span>La applicazioni del Calcolo Numerico</a></figure><p id="d6e40dfa-3b74-4b40-82b2-646cc282b7d2" class="">
+</p><hr id="74346d70-31c1-4e97-8ba1-7ad6ad637602"/><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="248483dc-abe5-4a1f-a7e7-6b170ad0aa42"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Avete visto il film “<strong><em>Il diritto di contare</em></strong>” (<a href="https://it.wikipedia.org/wiki/Il_diritto_di_contare">pagina Wikipedia</a>)?<p id="4535c2db-c026-4ece-9291-8b6186c15b90" class="">Se non lo avete ancora visto, consideratelo il compito per casa! Un bellissimo film che racconta una storia vera (con qualche licenza artistica) che tratta di matematica, calcolatori, integrazione e diritti femminili. </p><p id="516a9c78-284c-4a89-b517-38cbdb428079" class="">Sentirete nominare il<span style="border-bottom:0.05em solid"> metodo di Eulero</span>, una procedura dell’<strong>analisi numerica</strong> per la risoluzione delle equazioni differenziali!</p><p id="f0f0a1a3-d958-475c-9d48-f8debfcf678e" class="">E per un interessante approfondimento che chiarisce le verità storiche di Katherine Johnson e del metodo di  Eulero, quadrate questo breve video: <div class="indented"><p id="0d2cc958-d61f-4ad0-9b9c-d99d848584e3" class=""><a href="https://www.youtube.com/watch?v=gdxYsVniOYo">https://www.youtube.com/watch?v=gdxYsVniOYo</a></p></div></p></div></figure><p id="532abc5f-cee5-47f9-a9e6-e85b217efb2b" class="">
+</p><blockquote id="2fc36850-e3c0-4e89-826b-b0deadbd1705" class="">Concludiamo la lezione 1:</blockquote><p id="4fc0fd54-4e1a-4ead-9a0c-7ee4aa21dd34" class="">Avete dei dubbi su quello che abbiamo visto in questa lezione? Quale argomento avete capito meglio? E quale peggio? <strong>Scrivetelo qui</strong>: <a href="http://scrumblr.ca/lezione01_calcolo_numerico0822">http://scrumblr.ca/lezione01_calcolo_numerico0822</a></p><p id="793cd0eb-9f74-4219-92ff-0c5242b5c7eb" class=""><em>Immagine di testata: </em><a href="https://webb.nasa.gov/"><em>Webb Space Telescope</em></a><em> (NASA, ESA, CSA,  STScI)</em></p></div></article></body></html>

@@ -1,0 +1,733 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Lezione 3</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b5ca0dbc-8177-44a2-a28f-2021d7fe5a28" class="page serif"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/webb2.jpg" style="object-position:center 41.010000000000005%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">📏</span></div><h1 class="page-title">Lezione 3</h1></header><div class="page-body"><blockquote id="0ce3c31a-9bef-44a6-bbc0-2e1c46b1b391" class=""><strong>L’arte dei numeri (o meglio: i numeri dell’arte)</strong></blockquote><p id="575ee4e6-fce5-48c2-9521-a0a3ba9d0780" class="">L’<strong>arte</strong> e la <strong>matematica</strong> sono due discipline molto più vicine di quanto potrebbe sembrare. Del resto tutti abbiamo avuto modo di osservare questo collegamento in numerose e famose opere d’arte!</p><p id="d1c85b8f-b048-4566-8a41-8f36974c1014" class="">La prima di tutte è l’<em>Uomo vitruviano</em>, di Leonardo da Vinci. </p><div id="0a1f138c-1d85-4cdb-986f-ae430d1bead2" class="column-list"><div id="af4bcf44-6588-45ef-bc44-e3ba408f212b" style="width:50%" class="column"><figure id="1fd7b592-7b12-4cc8-b8fd-06f957c83b1d" class="image"><a href="img/Leonardo_da_Vinci_-_Uomo_vitruviano.jpg"><img style="width:800px" src="img/Leonardo_da_Vinci_-_Uomo_vitruviano.jpg"/></a><figcaption>Figura 9: Uomo vitruviano, Leonardo da Vinci.
+1490 circa, penna e inchiostro su carta.
+<em>Credits</em>: <a href="https://it.wikipedia.org/wiki/File:Leonardo_da_Vinci_-_Uomo_vitruviano.jpg">wikipedia</a></figcaption></figure><p id="3b203d4f-bade-42c1-a601-d68f0ceece6d" class=""><em>Approfondimento - Leonardo da Vinci e la matematica</em>: <a href="https://www.leonardo-da-vinci.net/it/matematica/">https://www.leonardo-da-vinci.net/it/matematica/</a></p></div><div id="48a7f389-c6eb-4f06-a427-4984c8b49185" style="width:50%" class="column"><p id="ed264ff6-e276-4f08-8100-1f0ce2b3b268" class="">Questo disegno è legato alla matematica non solo per la presenza di un cerchio e di un quadrato, ma in quanto l’uomo è disegnato secondo le <em>proporzioni ideali </em>del corpo umano, che corrispondono al <strong>rapporto aureo </strong>(il rapporto tra due grandezze <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span></span><span>﻿</span></span> e <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span></span></span></span></span><span>﻿</span></span>, con <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a &gt; b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span></span></span></span></span><span>﻿</span></span>, tali per cui vale <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle scriptlevel="0" displaystyle="false"><mfrac><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mi>a</mi></mfrac></mstyle><mo>=</mo><mstyle scriptlevel="0" displaystyle="false"><mfrac><mi>a</mi><mi>b</mi></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\text{\(\frac {a+b} {a}\)} = \text{\(\frac {a} {b}\)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2251079999999999em;vertical-align:-0.345em;"></span><span class="mord text"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.040392em;vertical-align:-0.345em;"></span><span class="mord text"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span><span>﻿</span></span>). Questa costante, così come il pi greco, è conosciuta fin dall’antichità e si può trovare in numerose realtà: a partire dalla successione di Fibonacci, fino all’arte e alla musica.</p><figure id="0fdbab24-14df-467b-b6a8-776ac901382e" class="image"><a href="img/Sezione_aurea.png"><img style="width:586px" src="img/Sezione_aurea.png"/></a><figcaption>Figura 10: Rapporto aureo rappresentato su un segmento.
+<em>Credits</em>: <a href="https://commons.wikimedia.org/w/index.php?curid=40640307">Custeped</a></figcaption></figure></div></div><p id="cd3ce0fe-3187-4faf-b932-45955fef6b74" class="">Poi abbiamo i <strong>frattali </strong>(particolari oggetti geometrici che si ripetono su diverse scale di grandezza), la <strong>prospettiva</strong>, la <strong>simmetria</strong>…</p><div id="fbded83b-2440-47f8-979f-ab763bcda897" class="column-list"><div id="602141aa-acbe-4bea-9bd4-7253ee7311cd" style="width:33.33333333333333%" class="column"><figure id="654ea5f0-7235-4ea1-a40e-99d5f0378eac" class="image"><a href="img/Formerly_Piero_della_Francesca_-_Ideal_City_-_Galleria_Nazionale_delle_Marche_Urbino_2.jpg"><img style="width:1024px" src="img/Formerly_Piero_della_Francesca_-_Ideal_City_-_Galleria_Nazionale_delle_Marche_Urbino_2.jpg"/></a><figcaption>Figura 11: Costruzione prospettica del quadro Città ideale (1480-1490), autore sconosciuto.
+<em>Credits</em>: <a href="https://commons.wikimedia.org/w/index.php?curid=178886">anonimo</a></figcaption></figure><p id="dfe37618-548e-4d96-9928-efb6209cf0f0" class="">
+</p></div><div id="9cec9e34-49c4-4bb3-9b46-a28ab134d1a0" style="width:33.33333333333333%" class="column"><figure id="01ef8e75-8a8e-4f97-a490-081d8622279d" class="image" style="text-align:left"><a href="img/6315221448_8c2887f1ec_b.jpg"><img style="width:633px" src="img/6315221448_8c2887f1ec_b.jpg"/></a><figcaption>Figura 12: Quadro di Jackson Pollock ( Cathedral, 1947), che mostra caratteristiche simili ai frattali.
+<em>Credits</em>: <a href="https://www.flickr.com/photos/detlefschobert/6315221448">Detlef Schobert</a></figcaption></figure><p id="d676c370-211e-4bbe-adeb-c80c33795f8d" class="">Approfondimento: <a href="http://archivio.torinoscienza.it/recensioni/i_frattali_di_pollock_20398.html">http://archivio.torinoscienza.it/recensioni/i_frattali_di_pollock_20398.html</a></p></div><div id="e63a681b-0dd6-4b7a-ad3d-71346d85ec4e" style="width:33.33333333333333%" class="column"><figure id="75b8b8b2-b70d-4f74-ac99-bcad62493159" class="image"><a href="img/Nautilus_in_Mixed_Media.jpg"><img style="width:564px" src="img/Nautilus_in_Mixed_Media.jpg"/></a><figcaption>Figura 13: La spirale aurea del Nautilus
+<em>Credits</em>: <a href="https://it.wikipedia.org/wiki/File:Nautilus_in_Mixed_Media.jpg">OneEagle</a></figcaption></figure><p id="1df08f3c-51e7-4a0b-bd45-4e4d00b58bea" class="">Approfondimento: <a href="https://www.youtube.com/watch?v=BMJ_B9_ab74">https://www.youtube.com/watch?v=BMJ_B9_ab74</a></p><p id="5cd97914-5cff-483e-997b-18a6291af197" class="">
+</p></div></div><p id="fcbac491-a855-4033-81b1-4a473ff7e3af" class="">
+</p><p id="7c6ecae2-9ee9-4bc1-bbe8-103829f38c55" class="">Proprio parlando di frattali ci avviciniamo al prossimo interessante argomento del calcolo numerico. Infatti, i frattali sono stati importanti per lo sviluppo del <strong>computer graphics</strong>! Grazie ai frattali è possibile generare realistici paesaggi, e modellare l’aspetto delle venature del marmo:</p><figure id="9270edf5-8820-43fe-9973-78d6958da1a1" class="image"><a href="img/Animated_fractal_mountain.gif"><img style="width:542px" src="img/Animated_fractal_mountain.gif"/></a><figcaption>Figura 14: Creazione di una montagna tramite l’utilizzo di triangoli frattali.
+<em>Credits</em>: <a href="https://en.wikipedia.org/wiki/Fractal_landscape#/media/File:Animated_fractal_mountain.gif">António Miguel de Campos</a></figcaption></figure><p id="1d399d22-cc07-4c7b-9970-ffaab533ebba" class="">
+</p><blockquote id="4e7339c7-9de4-418e-b5fe-c31f1b302913" class="">La modellazione e la rappresentazione di curve e superfici sono il collegamento tra <strong>computer grafica </strong>e <strong>calcolo numerico</strong>!</blockquote><p id="87bc2ab1-a44d-4815-a33d-5ede53c9a749" class="">
+</p><p id="9bedb8e4-41cf-4533-ad7e-dc0061a94d30" class="">Ma prima torniamo a carta e penna ✏️</p><hr id="606b853e-bc2b-40ff-b7bd-ef1b0cc52527"/><div id="c78dac06-c502-4d84-83ea-ba3b4e7115fc" class="column-list"><div id="ffc06422-1880-40ca-87e3-0609d3945259" style="width:100%" class="column"><h3 id="3bf76dae-cdac-4014-b5fb-d59d27c62aa8" class="block-color-orange">Esercizio 07</h3></div><div id="6b979d70-44a9-4596-bca8-2d3cb2d6473e" style="width:100%" class="column"><p id="2f3beadb-6a54-4c68-a170-cbd3d9253d62" class="">
+</p><p id="93212d80-cba7-476c-bbd2-6c373fcfc27b" class="">Prendete un foglio a quadretti e disegnate un quadrato di 10 x 10 cm. 
+Riuscite a disegnare una curva utilizzando solamente delle linee rette?</p></div></div><hr id="19bcf7b2-0116-4e92-a697-dc9f0f8f905f"/><div id="cc059dc1-23cd-4a04-8892-48ac53f2e3a0" class="column-list"><div id="c9767287-ddf9-421d-98a7-d799742d4104" style="width:100%" class="column"><h3 id="9127da40-cff5-4bb7-9c52-3d63be0fdd53" class="block-color-orange">Esercizio 07 +</h3></div><div id="3d8e403b-8f81-4440-8cdb-23cff976dd4b" style="width:100%" class="column"><p id="58137d66-33b4-470d-ba9a-885603db5caa" class="">
+</p><p id="51159c73-58d4-4445-b314-a0f53533a71f" class="">Se siete riusciti in questa impresa grafica, provate a scrivere l’algoritmo per replicare la costruzione della curva.</p><p id="cb74133c-9d58-4ae9-ba1b-cc4f3d2a8f44" class="">
+</p></div></div><hr id="895ddd86-2217-479d-beeb-03c646126541"/><p id="d2bc53e7-ccc8-4ec9-801c-f87fa734c935" class="">
+</p><p id="d6d65a81-cb44-4387-b109-5a76daa648de" class="">Esiste un semplice modo per risolvere l’esercizio, e con pochi passi, un foglio, una matita ed un righello sarete in grado di disegnare una curva ( che ovviamente sarà una <em>approssimazione </em>di una curva) utilizzando solamente linee rette:</p><div id="d9e54ac1-b036-4d7b-868d-1c773ec1000a" class="column-list"><div id="f45af6db-1450-48a8-b1c5-0c37c900fb07" style="width:50%" class="column"><figure id="f526793f-36d0-4b99-ac68-0c691717fee1" class="image"><a href="img/EnvelopeAnim.gif"><img style="width:334px" src="img/EnvelopeAnim.gif"/></a><figcaption>Figura 15: Animazione della creazione di un inviluppo.
+<em>Credits</em>: <a href="https://it.wikipedia.org/wiki/File:EnvelopeAnim.gif">Sam Derbyshire</a></figcaption></figure></div><div id="deadb9b0-bb68-4f15-9797-ef89f8ce82e0" style="width:50%" class="column"><ul id="e22266f0-07c9-44ee-84ae-e227712d2051" class="bulleted-list"><li style="list-style-type:disc">prendete due lati del quadrato (ad esempio il sinistra e quello in basso), poi segnate e numerate i centimetri partendo dall’angolo in comune (come se fosse un piano cartesiano);</li></ul><ul id="4bb15cbe-eb37-435b-9ccf-e4185de6afc4" class="bulleted-list"><li style="list-style-type:disc">partendo dalla posizione (1, 0) tracciate una retta che arriva in posizione (0, 10);</li></ul><ul id="609a42c0-7218-4347-9609-a2d62633756c" class="bulleted-list"><li style="list-style-type:disc">partendo dalla posizione (2, 0) tracciate una retta che arriva in posizione (0, 9);</li></ul><ul id="44e93c52-91d6-4e4e-ba5b-8ddcedb1f86c" class="bulleted-list"><li style="list-style-type:disc">… continuate così fino ad arrivare all’ultima retta, che dal punto (10, 0) arriva in (0,1).</li></ul></div></div><p id="0d48bee5-1253-4c5c-b6f8-bc4e63f8da9b" class="">
+</p><blockquote id="1ca4dce8-947f-47bc-9a62-aae6683e9b33" class="">📏 Avete creato un <strong>inviluppo</strong>!</blockquote><p id="42291255-39e0-40ae-90e4-fb825e6ca85f" class="">Cos’è un inviluppo?</p><p id="2c61dbd1-35ca-48d2-b24b-4b0b25c5037c" class="">Un inviluppo è una <strong>curva piana</strong> creata a partire da una collezione (<em>famiglia) </em>di curve. Più precisamente, un <strong>inviluppo di una data famiglia di curve</strong> è una <strong>curva tangente</strong> ad <span style="border-bottom:0.05em solid">ogni elemento</span> della famiglia stessa.</p><p id="9a2174a4-57c5-43d3-8b5f-940bad870492" class="">La curva che abbiamo creato (o meglio<em>, approssimato</em>) con carta, matita e righello è un inviluppo di una <strong>famiglia di rette</strong>, o, più precisamente, una <strong>curva di Bézier</strong>!<strong> </strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="71370d7a-d108-475d-8408-60307cc0760a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Una <strong>curva di Bézier</strong> è una <strong>curva planare parametrica</strong>, che può essere costruita a partire da un insieme di punti detti <strong>punti di controllo</strong>, tramite una <strong>interpolazione lineare </strong>. Collegati i punti di controllo in modo ordinato da linee rette, si ottiene il <strong>poligono di controllo</strong>, che approssima la forma della curva di Bézier.</div></figure><ul id="e034c125-bf8b-4c46-83cf-06b0a54b55d3" class="block-color-blue_background toggle"><li><details><summary><strong>Chi è Bézier?
+</strong> Approfondimento: La storia delle curve di Bézier</summary><p id="5862a98b-8c5c-440d-8afe-06736185441e" class="">Le curve di Bézier prendono il nome dal loro inventore: Pierre Bézier (1910 - 1999), ingegnere e matematico francese. 
+Negli anni Settanta, lavorando alla Renault, si pose il problema di come poter rappresentare arbitrarie curve al computer, per poter fruttare applicazioni CAD per la produzione della carrozzeria delle automobili. 
+
+Qualche anno prima, in un’altra azienda, la Citroën, il fisico e matematico francese Paul de Casteljau si era posto lo stesso problema. </p><p id="da1b4639-e14b-4e47-b0cc-436bb2fdb478" class="">In modo indipendente e a qualche anno di distanza, i due matematici trovarono il modo per definire questo particolare insieme di curve, che ora sono famose con il nome di Pierre Bézier, il primo ad averle pubblicizzate. L’algoritmo che ne descrive i calcoli di costruzione, invece,  prende il nome di Paul de Casteljau, il primo ad aver sviluppato un <em>metodo numerico </em>per calcolare le curve, e ad averlo applicato per la modellazione di parti di automobili.</p></details></li></ul><p id="ed9cd1d4-81b7-4d10-b6a2-5b42af1dd9cf" class="">
+</p><p id="7ec2e021-2516-41f0-9eca-230bb08a3ed7" class="">Guardiamo meglio la definizione di curva di Bézier. Possiamo notare due importanti caratteristiche:</p><ul id="2be2326b-27d4-48c5-b509-575cbd9e0dc3" class="bulleted-list"><li style="list-style-type:disc">Le curve di Bézier sono <strong>curve parametriche</strong>, ovvero <span style="border-bottom:0.05em solid">dipendono da un parametro</span> (che chiameremo <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span>);</li></ul><ul id="4132e45f-1919-4ccf-b546-b9bcffcf74ea" class="bulleted-list"><li style="list-style-type:disc">Possiamo calcolare e costruire queste curve utilizzando l’<strong>interpolazione lineare</strong>, che altro non è che <span style="border-bottom:0.05em solid">un metodo del calcolo numerico</span>!</li></ul><h2 id="a4677b40-08b8-41e6-98ed-50e629e7a2ed" class="">Interpolazione lineare</h2><blockquote id="f0d12998-31d0-4d04-9f05-7005a08f4cd2" class=""><em>Interpolare </em>significa ottenere un nuovo punto sul piano cartesiano a partire da un insieme di altri punti, ipotizzando che tutti appartengano ad una particolare funzione.</blockquote><p id="3d5634a1-a7ab-4003-9121-66406b1fb455" class="">L’<strong>interpolazione lineare</strong> approssima un valore compreso tra <span style="border-bottom:0.05em solid">due punti</span>, che si considera appartenenti ad una <span style="border-bottom:0.05em solid">funzione lineare</span>. Una semplice forma di interpolazione lineare, che è anche l’ingrediente necessario alla valutazione delle curve di Bézier,  è la<strong> media ponderata</strong>.</p><div id="23e9d4c3-db39-4c79-b993-6b9183c031d3" class="column-list"><div id="be588f85-7e0e-447c-ab0e-9d4c5ceffc8b" style="width:50%" class="column"><figure id="c0387d27-12a2-4dc4-9cee-b063e4b06cdd" class="image"><a href="img/Diagramma_senza_titolo-Pagina-4.drawio_(1).png"><img style="width:377px" src="img/Diagramma_senza_titolo-Pagina-4.drawio_(1).png"/></a><figcaption>Figura 16: Segmento parametrico.</figcaption></figure></div><div id="448de1f2-ab99-4c76-9288-b8b97408835c" style="width:50%" class="column"><p id="1c0b7422-b76d-4a59-9070-dae936c717f3" class="">Dati due punti <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span></span></span></span></span><span>﻿</span></span>  e <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></span><span>﻿</span></span>,  un punto tra di essi può essere rappresentato in base al valore che assume il parametro <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span>. </p><p id="72ffdba9-ed75-4eae-a496-41001479282e" class="">Questa interpolazione lineare è un metodo che tutti abbiamo usato, ed usiamo nella vita di tutti i giorni.</p><p id="8ea3e15c-723b-46f3-ad8c-94510ad2e9d2" class=""> Ad esempio: arrivati alla stazione(<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span></span></span></span></span><span>﻿</span></span>), partiamo in treno verso la meta ( <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></span><span>﻿</span></span> ) della nostra prossima vacanza, quando, impazienti di arrivare, chiediamo al nostro compagno di viaggio quanto manca all’arrivo. “Siamo a due terzi del viaggio!”, ci risponde. </p></div></div><p id="21d77870-2b57-47f6-87ec-2690ff38233f" class="">Ecco che il nostro amico ha applicato una interpolazione lineare tra la stazione di partenza del nostro viaggio, e quella di arrivo. Ci ha infatti detto che il <em>punto </em>in cui ci troviamo dista da <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span></span></span></span></span><span>﻿</span></span> di un valore <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 2/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2/3</span></span></span></span></span><span>﻿</span></span> rispetto al totale, e che quindi dista da <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></span><span>﻿</span></span> di un valore <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">t =1/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/3</span></span></span></span></span><span>﻿</span></span>. </p><p id="f9a63333-dda1-481a-ba88-da16136dcdcd" class="">
+</p><hr id="4c3a6fd7-19a8-4a66-85f4-368d7a3f1dbf"/><div id="874e9afc-d5e9-47d9-afbd-b6845d1a52ee" class="column-list"><div id="74cf62b5-bfc4-4fa2-9201-7600320c388a" style="width:100%" class="column"><h3 id="4f64222f-d864-4d1b-9dff-3da3609c3176" class="block-color-orange">Esercizio 08</h3></div><div id="0be0630f-2326-4ee5-a5d6-f2193dc99741" style="width:100%" class="column"><p id="4960b5e5-4cfa-4391-b1ba-4ac1cab2b99a" class="">Rileggendo bene la definizione e l’esempio di interpolazione lineare, guardate come abbiamo fatto a disegnare un inviluppo, e individuate in che modo viene applicata a questo caso. Cercate di formalizzarlo.</p><p id="75f17769-3f8a-43c1-8393-2549eeadee9b" class="">
+</p></div></div><hr id="33ae653a-a4c5-4644-b571-aa55fd28cc37"/><p id="f1aa15fe-136e-4264-9275-e31514c5f059" class="">
+</p><p id="9846b614-d257-4acb-8f8f-208e17e4c4ca" class="">Per ora abbiamo visto esempi di curve di Bézier costruite a partire da tre punti di controllo, che viene chiamata <strong>curva di Bézier quadratica </strong>(oppure curva di Bézier di secondo grado)<strong>.</strong></p><ul id="d679849b-0631-49a9-b720-53f274feb599" class="toggle"><li><details><summary>Qual’ è la curva di Bézier costruita su due soli punti? </summary><p id="500b19bd-b434-4eed-b5df-cb53ca53ab81" class="">È semplicemente il segmento formato dai due punti di controllo.
+</p></details></li></ul><p id="7d70f068-1a34-4374-a63b-74e60977db23" class="">E utilizzando tre punti di controllo? Otteniamo una <strong>curva di Bézier cubica</strong>. Ecco un esempio:</p><figure id="edffd707-2d95-4064-99d2-a69d870fed78" class="image"><a href="img/bez01.png"><img style="width:930px" src="img/bez01.png"/></a><figcaption>Figura 17: Curva di Bézier cubica (dove la poligonale di controllo è tratteggiata).</figcaption></figure><p id="29732b4e-9250-448c-be0b-9b4535253455" class="">Ma possiamo <strong>generalizzare </strong>e aggiungere un<span style="border-bottom:0.05em solid"> numero arbitrario di punti</span>!</p><figure id="1ee9b304-10bf-466e-a979-f668f072cb04" class="image"><a href="img/bez02.png"><img style="width:996px" src="img/bez02.png"/></a><figcaption>Figura 18: Curva di Bézier con undici punti di controllo (dove la poligonale di controllo è tratteggiata).</figcaption></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="072cb3db-362d-4a26-b12c-2f4319a156db"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Ogni curva di Bézier con <strong><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span></span><span>﻿</span></span></strong><strong> punti di controllo </strong>e <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span><span>﻿</span></span> segmenti nella poligonale di controllo ha grado = <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n -1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span><span>﻿</span></span>. </div></figure><p id="581d7927-76ca-4f19-a098-e5d17363913a" class="">
+</p><blockquote id="a5c79f11-5f4a-46b3-824e-c65f46e2ff35" class="">Costruiamo una curva di Bézier: <strong>algoritmo di </strong><strong><em>de Casteljau</em></strong></blockquote><p id="eeb6523b-d520-436f-ab06-cf0836800445" class="">Abbiamo visto che le curve di Bézier quadratiche vengono costruite tramite tre applicazioni dell’interpolazione lineare: si interpolano gli estremi dei due segmenti della poligonale di controllo ottenendo due nuovi punti, che vengono usati per l’ultima interpolazione che dà come risultato un punto della curva di Bézier. </p><p id="7932fd40-2ea4-4339-96cd-510569b41d6f" class="">La formula dell’<strong>interpolazione lineare </strong>(<em>Lerp</em>) tra due punti <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span></span></span></span></span><span>﻿</span></span> e <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></span><span>﻿</span></span>, e parametro <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span> è:<div class="indented"><p id="943a5988-a6da-4ed6-b2ea-a5b26d9624ee" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>e</mi><mi>r</mi><mi>p</mi><mo stretchy="false">(</mo><mi>t</mi><mo separator="true">,</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mtext>−</mtext><mi>t</mi><mo stretchy="false">)</mo><mo>⋅</mo><mi>a</mi><mo>+</mo><mi>t</mi><mo>⋅</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">Lerp(t,a,b) = (1 − t )\cdot a + t\cdot b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1−</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span></span></span></span></span><span>﻿</span></span></p></div></p><div id="1abbec41-8678-4577-b79f-9d0ab83ddb8c" class="column-list"><div id="71b61e9c-2301-4eff-a1a2-f6c8324e3159" style="width:50%" class="column"><p id="03f8028a-e36e-4795-8879-94f4534672ae" class="">
+</p><figure id="bcded3a1-d8a1-4437-be6e-aa6fe1df58c7" class="image"><a href="img/Bzier_2_big.gif"><img style="width:360px" src="img/Bzier_2_big.gif"/></a><figcaption>Figura 19: Costruzione di una curva di Bézier quadratica.
+<em>Credits</em>: Phil Tregonin <a href="https://it.wikipedia.org/wiki/Curva_di_B%C3%A9zier#/media/File:B%C3%A9zier_3_big.gif">(1)</a>,<a href="https://it.wikipedia.org/wiki/File:B%C3%A9zier_2_big.svg"> (2)</a></figcaption></figure><p id="ed3b393b-7290-4628-b1cd-353b2b1c2fe5" class="">
+</p></div><div id="0f557009-4b0f-44a0-a347-ac98466f1a89" style="width:50%" class="column"><p id="19968f7c-9585-4780-bc78-49bbdf2c08c3" class="">
+</p><figure id="a68dfdf6-5d04-4e80-b12f-b771ac699a7e" class="image"><a href="img/Bzier_2_big.svg.png"><img style="width:1280px" src="img/Bzier_2_big.svg.png"/></a></figure></div></div><p id="f66bc679-4795-4d3f-8348-2c7c1b6d79d8" class="">Questo stesso procedimento viene applicato anche con curve di (qualsiasi) grado maggiore. Consideriamo il caso di grado 3. </p><div id="12f22ad4-293a-4219-ab79-6014ec424968" class="column-list"><div id="5bec7186-d3fb-4091-99cd-42363c145607" style="width:50%" class="column"><figure id="b7dcb5d6-3a86-4b67-9825-f2934b1dffd3" class="image"><a href="img/Bzier_3_big.gif"><img style="width:360px" src="img/Bzier_3_big.gif"/></a><figcaption>Figura 20: Costruzione di una curva di Bézier cubica.
+<em>Credits</em>: Phil Tregonin<a href="https://it.wikipedia.org/wiki/File:B%C3%A9zier_3_big.gif"> (1)</a>, <a href="https://it.wikipedia.org/wiki/File:B%C3%A9zier_3_big.svg">(2)</a></figcaption></figure></div><div id="f64c1a47-f0a9-4480-b455-d6bdbecfa18c" style="width:50%" class="column"><figure id="0890268e-665d-4139-87e3-252690b49a1a" class="image"><a href="img/Bzier_3_big.svg.png"><img style="width:1024px" src="img/Bzier_3_big.svg.png"/></a></figure></div></div><p id="669f01f9-dde1-4fb8-ba4e-f0663a445bd6" class="">La costruzione della curva cubica, illustrata anche dalla Figura  20, è la seguente:</p><ul id="8a22e252-bbaf-4325-95b3-98b6ea9cf277" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>0</mn></msub><mo>=</mo><mi>L</mi><mi>e</mi><mi>r</mi><mi>p</mi><mo stretchy="false">(</mo><mi>t</mi><mo separator="true">,</mo><msub><mi>P</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>P</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q_0 = Lerp(t, P_0, P_1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></mark></li></ul><ul id="929e61cd-4d99-4066-b94b-f508da9469a6" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>1</mn></msub><mo>=</mo><mi>L</mi><mi>e</mi><mi>r</mi><mi>p</mi><mo stretchy="false">(</mo><mi>t</mi><mo separator="true">,</mo><msub><mi>P</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>P</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q_1 = Lerp(t, P_1, P_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></mark></li></ul><ul id="69c6544f-62fd-46f8-bef9-2ff6c7de8eda" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>2</mn></msub><mo>=</mo><mi>L</mi><mi>e</mi><mi>r</mi><mi>p</mi><mo stretchy="false">(</mo><mi>t</mi><mo separator="true">,</mo><msub><mi>P</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>P</mi><mn>3</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q_2 = Lerp(t, P_2, P_3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></mark><ul id="9c177dc9-37d5-4713-8962-0e301689ad4c" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-blue"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>0</mn></msub><mo>=</mo><mi>L</mi><mi>e</mi><mi>r</mi><mi>p</mi><mo stretchy="false">(</mo><mi>t</mi><mo separator="true">,</mo><msub><mi>Q</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>Q</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R_0 = Lerp(t, Q_0, Q_1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></mark></li></ul><ul id="a689ccbd-45bb-4350-914e-9bf16b1d9e1a" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-blue"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>1</mn></msub><mo>=</mo><mi>L</mi><mi>e</mi><mi>r</mi><mi>p</mi><mo stretchy="false">(</mo><mi>t</mi><mo separator="true">,</mo><msub><mi>Q</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>Q</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R_1 = Lerp(t, Q_1, Q_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></mark><ul id="83b58e15-50e4-4a57-9b5a-d5ccc4c03de0" class="bulleted-list"><li style="list-style-type:square"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mi>L</mi><mi>e</mi><mi>r</mi><mi>p</mi><mo stretchy="false">(</mo><mi>t</mi><mo separator="true">,</mo><msub><mi>R</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>R</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B = Lerp(t, R_0, R_1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></li></ul></li></ul></li></ul><p id="74108ac2-1d89-4a5d-b50b-f4fd2e2ead18" class="">
+</p><p id="1dbb1ca7-d5cc-49cb-9ac5-a8a82d9340ee" class="">Il punto <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></span><span>﻿</span></span> è un punto della curva di Bézier! Basta ripetere queste sei interpolazioni lineari per un insieme scelto di valori di <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">t \in [0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65418em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span></span><span>﻿</span></span>  e si costruisce la curva di Bézier con l’<strong>algoritmo di de Casteljau!</strong></p><p id="783514b0-9075-4f1c-886a-f842743f0673" class="">
+</p><p id="5b334998-708e-424a-8bc7-56fd7b2f9424" class="">Generalizzando ancora di più, la descrizione del procedimento per un <strong>numero arbitrario di punti di controllo </strong>è questo:<div class="indented"><blockquote id="3213ed30-3b36-4308-82ed-e0f567ee7605" class="">Dati <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span></span><span>﻿</span></span> punti di controllo, per ogni segmento della poligonale di controllo (<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span><span>﻿</span></span> segmenti) si interpolano gli estremi e si ottengono <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></span><span>﻿</span></span>  nuovi punti. Questi si collegano in modo ordinato da rette (<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n-3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span></span><span>﻿</span></span> segmenti), i cui estremi vengono nuovamente interpolati. Si <strong>ripete</strong> il procedimento fino a quando non si rimane con <strong>due punti ed un solo segmento</strong>. 
+Variando il valore di <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span>, l’interpolazione sull’ultimo segmento rimasto corrisponde alla curva di Bézier.</blockquote><p id="b33c3f57-0686-4432-b4c7-8927283ba36c" class=""><em>Approfondimento</em>: per una spiegazione (anche visiva) delle curve di Bézier guardate questo video fino al minuto 4:21 <a href="https://www.youtube.com/watch?v=aVwxzDHniEw">https://www.youtube.com/watch?v=aVwxzDHniEw</a> </p><p id="d8a63b4d-0281-4f8f-a6db-b46f45207d78" class="">
+</p></div></p><hr id="813081e6-d485-423f-a56b-eee97f718ff5"/><div id="fb8b0cf3-7b79-4c56-bc0c-1da13ee33685" class="column-list"><div id="51465abf-55da-46ef-8efa-c5ce45ca73d6" style="width:50%" class="column"><h3 id="1ed47eb2-833a-4348-9e95-40962a55bd15" class=""><mark class="highlight-orange">Esercizio 9</mark></h3><p id="5d252363-aae9-4d87-b5d6-3c855555833e" class="">
+</p></div><div id="077019e1-98c1-4ad7-abff-da183158a121" style="width:50%" class="column"><p id="af9dab64-c988-4748-93b2-62257cfcd6c3" class="">Prendete carta, penna e righello e provate a disegnare una curva di Bézier cubica!
+Utilizzate quattro vertici e tre lati di un quadrato come punti e poligonale di controllo e applicate l’algoritmo di de Casteljau. </p><ul id="1d223982-1998-47d8-8580-273c423a4fa5" class="toggle"><li><details><summary><em>Serve un suggerimento?</em></summary><p id="8c72ca60-9825-4e4e-83b3-408d62712143" class="">Guardate l’animazione della costruzione della curva cubica presentata sopra e osservate bene come si muovono i punti. Quante curve riuscite a tracciare dal loro movimento?
+</p></details></li></ul></div></div><hr id="87ed823b-454c-4160-bcda-ee026f3210f0"/><p id="bc2fbfde-8d60-4499-bfcc-65fd7be123c1" class="">
+</p><p id="6ef58d2c-4cac-40e5-adaf-b9fc9eb6ddb0" class="">L’<strong>algoritmo di de Casteljau</strong> permette di <strong>valutare la curva di Bézie</strong>r in un insieme di <strong>punti dipendenti dal parametro </strong><strong><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span></strong>.  Se dobbiamo rappresentare graficamente la curva per visualizzarla sullo schermo di un computer, ogni coppia ordinata di punti può essere collegata da una linea retta.</p><p id="0f210dc7-ef1a-4058-b0a4-85b78894bb1a" class="block-color-purple_background">❗Quindi, maggiori sono i valori di <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span>  per cui viene valutata la curva di Bézier, più accurata sarà l’approssimazione della stessa (in modo simile a quanto accade con il numero degli intervalli nel metodo dei rettangoli).</p><p id="20acb4c7-22be-4c48-8168-f28e9fe445bd" class="">
+</p><p id="7ff30f2c-ba3f-4217-a5f4-f4bbfe8eb6a9" class="">Alcune osservazioni prima di passare all’implementazione:</p><ul id="4fc19369-af20-4d4f-b12a-54c9c5341133" class="bulleted-list"><li style="list-style-type:disc">Osservando la ripetizione delle <span style="border-bottom:0.05em solid">interpolazioni</span> dell’algoritmo di de Casteljau, si evidenzia uno <strong>schema triangolare</strong>, come nella sottostante. La base dello schema a piramide sono i punti di controllo <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>P</mi><mn>1</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">P_0, P_1, ...</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">...</span></span></span></span></span><span>﻿</span></span> che servono a calcolare i punti successici: <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">Q_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> dipende da <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">P_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>  e <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">P_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> del livello precedente, e lo stesso vale per gli altri punti.  Dopo aver calcolato il punto <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">Q_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>, il punto <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">P_0 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> non serve più! 
+Procedendo con i livelli, i punti necessari diminuiscono, fino ad arrivare alla fine dello schema, dove troviamo l’<span style="border-bottom:0.05em solid">unico valore di interesse alla fine dell’esecuzione</span> dell’algoritmo di de Casteljau: il punto <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></span><span>﻿</span></span>, che è un punto della curva.
+Lo schema è generalizzabile per curve di Bézier di qualsiasi grado, e ci aiuta a capire come poter implementare l’algoritmo!</li></ul><figure id="803e6795-2d98-4aae-8f96-7add087d52c3" class="image"><a href="img/decastel.png"><img style="width:838px" src="img/decastel.png"/></a><figcaption>Figura 21: Schema triangolare delle interpolazioni ripetute dell’algoritmo di de Casteljau, nel caso di una curva di Bézier cubica.</figcaption></figure><hr id="b4a443a1-e1fe-4999-951f-76fbb39f6ea8"/><div id="5a07862c-29eb-4858-a20f-7c81ade0e64f" class="column-list"><div id="1c6bc030-0b0e-470c-8077-dd8f51cff107" style="width:100%" class="column"><h3 id="d7a85b29-68ec-48d9-b5bc-f45d76a7f8ad" class="block-color-orange">Esercizio 10</h3><p id="c3492d2e-2ce4-4240-bd38-751b7cc85f22" class="">
+</p></div><div id="de8ca81c-b73c-4cd8-852b-a714bd6e6bc8" style="width:100%" class="column"><p id="b56b5343-4448-4fd7-ab44-7738de558663" class="">In questo esercizio dovrai implementare l’algoritmo di de Casteljau per la costruzione di curve di Bézier di ordine qualsiasi.
+
+Il file <a href="http://BezierCurves.py"><code>BezierCurves.py</code></a> contiene il codice di una applicazione grafica che permette di disegnare e visualizzare le curve di Bézier. Il comportamento è il seguente.</p></div></div><ul id="30fa2783-7ab0-45cc-8ffd-f3975d631225" class="bulleted-list"><li style="list-style-type:disc">L’applicazione presenta due modalità: la modalità “modellazione” (quella iniziale) permette di creare e modificare la curva di Bézier; la modalità “animazione” mostra come la curva viene costruita (in questa modalità non è possibile la modifica);</li></ul><div id="861ed6c9-f320-44a9-bb4c-43bc944845b5" class="column-list"><div id="b04def80-1593-400b-a435-18a89066ec4a" style="width:50%" class="column"><figure id="9f00219a-7a41-44dc-98c6-4ba6d3ed7e38" class="image"><a href="img/app_modellazione.png"><img style="width:1295px" src="img/app_modellazione.png"/></a><figcaption>Figura 22: Screenshot dell’applicazione in modalità “modellazione”.</figcaption></figure><p id="5a5179d4-6b99-49b3-9cb9-7c42f9318eca" class="">
+</p></div><div id="512de798-6db5-4d79-9c77-2c7116f66748" style="width:50%" class="column"><figure id="d7bdd8d9-42ca-4843-a31c-a38410999998" class="image"><a href="img/app_animazione.png"><img style="width:1307px" src="img/app_animazione.png"/></a><figcaption>Figura 23: Screenshot dell’applicazione in modalità “animazione”.</figcaption></figure><p id="eb34ed10-5097-41fc-843b-ff4f11d5e67f" class="">
+</p></div></div><ul id="79cab174-9976-45ed-b37c-92ad031149bb" class="bulleted-list"><li style="list-style-type:disc">Con un singolo click del tasto sinistro sulla finestra si aggiungono nuovi punti di controllo;</li></ul><ul id="585bdd0a-ad2f-4661-92fe-c11d1d5cea72" class="bulleted-list"><li style="list-style-type:disc">Con un singolo click del tasto destro sopra ad un punto esistente si rimuove lo stesso;</li></ul><ul id="3add22b5-d6db-4bb8-9f57-a0d2d83bf657" class="bulleted-list"><li style="list-style-type:disc">Cliccando e trascinando con il tasto sinistro un punto esistente è possibile modificarne la posizione;</li></ul><ul id="edd68f9c-8b9a-4e72-82ec-1e6049062a0f" class="bulleted-list"><li style="list-style-type:disc">Il tasto <code>c</code> pulisce la finestra cancellando tutti i punti di controllo;</li></ul><ul id="3e050f92-752b-4b45-843d-3dd99327df76" class="bulleted-list"><li style="list-style-type:disc">Il tasto <code>a</code> permette di passare dalla modalità “modellazione” alla modalità “animazione”. Il passaggio non interferisce con la curva attuale.</li></ul><ul id="9b73ed7a-1013-44f8-8159-5f1d6b72803b" class="bulleted-list"><li style="list-style-type:disc">Il tasto <code>q</code> fa terminare l’esecuzione dell’applicazione.<p id="b97b0c77-0271-440b-9956-f6efde74a2a4" class=""><em>Nota: l’applicazione è realizzata tramite </em><code>tkinter</code><em>, libreria grafica di Python, che dovreste avere tutti, in quanto facente parte della libreria standard di Python.</em></p><p id="f99675f3-93e7-4920-afb4-e1c497c354d7" class="">
+</p></li></ul><p id="603aa6b5-fe69-495d-bb63-3d4084a8f34c" class="">Ma l’applicazione non disegna ancora le curve! Perché manca una cosa fondamentale: l’<strong>implementazione dell’algoritmo di de Casteljau</strong>!  La lista <code>self.nodes</code> della classe <code>Curva_Bezier</code> contiene l’elenco dei punti di controllo, espressi come tuple <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>. Implementa il metodo <code>deCasteljau</code> che prende in input il parametro <code>t</code> , e utilizza i punti di controllo per calcolare il punto della curva di Bézier per il parametro <code>t</code> dato, restituendolo sempre in una tupla <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>.
+Tutto il resto del codice è completo, e anche le chiamate al metodo <code>deCasteljau</code> sono presenti.</p><p id="45e44acc-61bf-4fc7-97c4-9689ad5ae9c9" class="">
+</p><hr id="f22984f4-572d-4283-867b-397e5969df25"/><h3 id="fff22698-24b8-4510-8ba6-1cc1fbe23c3a" class="block-color-orange">Esercizio 10+</h3><p id="ecced516-2103-40a1-9549-e158f5eb6a63" class="">
+</p><p id="76f37183-7214-45af-8cbf-d9eb0aa1be00" class="">Osserva la chiamata al metodo <code>deCasteljau</code> all’interno del metodo <code>render</code>. Prova a modificare il numero delle chiamate a <code>deCasteljau</code>, variando opportunamente il valore di <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span>. Osserva cosa succede se vengono valutati pochi valori di <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span>.</p><hr id="4f947df6-c443-4576-babc-8175d03af375"/><h3 id="e4c61eae-35a6-4ce2-ac10-98c7ae4d00af" class=""><mark class="highlight-orange">Esercizio 10++</mark></h3><p id="eae1f2fc-da94-42ac-8806-a75517e1e440" class="">Sperimenta e gioca con l’applicazione!
+Osserva il comportamento delle curve di Bézier all’aumentare del numero di punti di controlli. Cosa succede?</p><hr id="960346cd-330a-4e1e-aad7-f51f6df168a0"/><p id="fe3c0308-4b4a-4260-8cfd-b19d3437c1ab" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1045fbdd-a530-40e2-897a-5a95475fec22"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Le curve di Bézier hanno innumerevoli applicazioni! </div></figure><p id="3e4fa9e9-579d-4a89-981d-a75d430c39d5" class="">Una limitazione delle curve di Bézier è che all’aggiunta di punti di controllo la curva si allontana progressivamente dalla poligonale, e diventa più difficile da controllare.<strong> Spezzando una lunga curva in più curve di Bézier</strong> che condividono gli estremi, è però possibile <strong>limitare la crescita del grado della curva </strong>e anche creare degli angoli.</p><ul id="37119f7b-931c-4441-b5e2-c506df65e28a" class="bulleted-list"><li style="list-style-type:disc">Le curve di Bézier, infatti, sono utilizzate per la creazione di<strong> Typeface</strong>;</li></ul><div id="9c340610-adb5-4662-b9b0-84f34d4d21f1" class="column-list"><div id="1756220b-a36a-44cf-9d52-01bfd7bda189" style="width:50%" class="column"><figure id="86e84816-5d95-492a-af94-00f11bf66a72" class="image"><a href="img/20200223204338.png"><img style="width:566px" src="img/20200223204338.png"/></a><figcaption>Figura 24: esempio di typeface della lettera “e”.
+<em>Credits</em>: <a href="https://jdhao.github.io/2018/11/27/font_shape_mathematics_bezier_curves/">jdhao</a></figcaption></figure></div><div id="c9e7c3aa-b4c1-4b53-9ce9-c6d2b79b8640" style="width:50%" class="column"><p id="6b9a065a-3022-43bc-9a16-c9abf1cf1956" class=""><em>Approfondimenti</em>: </p><ol type="1" id="65a3d8bf-34da-4edf-b3ab-7b28de546ef1" class="numbered-list" start="1"><li>Un esempio interattivo della lettera “D”: <a href="https://www.geogebra.org/m/csrHNbAY">https://www.geogebra.org/m/csrHNbAY</a></li></ol><ol type="1" id="45f21d6c-1691-4a5c-aef9-95d988bb371d" class="numbered-list" start="2"><li>Una breve descrizione delle curve di Bézier e della loro applicazione alle font: <a href="https://jdhao.github.io/2018/11/27/font_shape_mathematics_bezier_curves/">https://jdhao.github.io/2018/11/27/font_shape_mathematics_bezier_curves/</a></li></ol><p id="8a584230-9127-4223-b6ed-cb1ef9b120d9" class="">
+</p></div></div><ul id="b07421ab-979c-41c1-b9af-01c189264789" class="bulleted-list"><li style="list-style-type:disc">In <span style="border-bottom:0.05em solid">robotica</span> vengono utilizzate per la definizione di <strong>traiettorie</strong>;</li></ul><ul id="198c2516-d9a5-4112-9365-55a0aa14d29f" class="bulleted-list"><li style="list-style-type:disc">In <span style="border-bottom:0.05em solid">medicina e nelle scienze biologiche</span> si utilizzano come metodo di approssimazione (ad esempio: approssimare i biomarker della malattia di Alzheimer<a href="https://pubmed.ncbi.nlm.nih.gov/30333743/"> [5]</a>)</li></ul><ul id="40f51220-5397-441d-a36e-54b3de1c4cd9" class="bulleted-list"><li style="list-style-type:disc">Nel campo <span style="border-bottom:0.05em solid">dell’architettura</span> sono usate per la progettazione di costruzioni;</li></ul><ul id="58d4ec67-33a7-48b8-a613-ad904ce29c81" class="bulleted-list"><li style="list-style-type:disc">Nel campo della<span style="border-bottom:0.05em solid"> produzione industriale</span> sono un fondamentale strumento di <strong>modellazione</strong>;</li></ul><div id="7a2c113d-a91e-4b8d-a58b-8b74b7974b4b" class="column-list"><div id="89d6a499-42ab-41e6-8115-4991ab454b76" style="width:50%" class="column"><ul id="3d514a38-5750-4e9e-81e7-0e85d987ccfc" class="bulleted-list"><li style="list-style-type:disc">Una estensione delle curve di Bézier nello<strong> spazio tridimensionale</strong> genera le <strong>superfici di Bézier</strong>, utilizzate ampiamente nella modellazione grafica.</li></ul></div><div id="78a09f35-83e7-4a1d-8aa8-947e4f454a6d" style="width:50%" class="column"><figure id="b709e798-feca-4cdc-9033-988069a2bedf" class="image"><a href="img/Bicubic_Patches.png"><img style="width:507px" src="img/Bicubic_Patches.png"/></a><figcaption>Figura 25: Modello formato da un insieme di patch (“toppe”) di Bézier.
+<em>Credits</em>: <a href="https://it.wikipedia.org/wiki/Superficie_di_B%C3%A9zier#/media/File:Bicubic_Patches.png">Philip Rideout</a></figcaption></figure></div></div><ul id="7c87b7c3-3b6d-4252-9559-4d51431a4a46" class="bulleted-list"><li style="list-style-type:disc"> Le curve e le superfici di Bézier sono fondamentali nella realizzazione di <strong>animazioni</strong> ed <strong>effetti speciali</strong>, così come moltissimi altri<strong> metodi del calcolo numerico</strong>, e sono quindi presenti in qualsiasi software per la computer grafica 3D (ad esempio: <a href="https://www.blender.org/">Blender</a>). </li></ul><div id="9f64c8d2-f32d-4d8b-ba56-b6bfed69cc69" class="column-list"><div id="d2bc8509-b195-4bf2-b997-0b0dc09d303d" style="width:50%" class="column"><figure id="1db86bbf-e2e2-4ba4-be85-46c47dcbe760" class="image"><a href="img/animation01-1280x720.jpg"><img style="width:1280px" src="img/animation01-1280x720.jpg"/></a><figcaption>Figura 26: Schermata di animazione di <em>Blender</em>, in cui sono visibili le curve che definiscono il movimento dell’animazione.
+<em>Credits</em>:<a href="https://www.blender.org/features/animation/"> Blender</a></figcaption></figure></div><div id="b62b0a6e-6705-45ac-8c05-f3a979c633ce" style="width:50%" class="column"><p id="4c0e4de1-48cb-46b2-b2c8-16e017e2dedf" class=""><em>Approfondimenti</em>: </p><ol type="1" id="e277b020-44ea-4370-a41c-8da164190d74" class="numbered-list" start="1"><li>Semplice tool interattivo per l’applicazione delle curve di Bézier all’animazione: <a href="https://www.geogebra.org/m/bx3qCjA9">https://www.geogebra.org/m/bx3qCjA9</a></li></ol><ol type="1" id="7e18ffa5-5611-44c9-96d9-f7f8bf453d02" class="numbered-list" start="2"><li>Due video sulle curve nell’animazione: <a href="https://www.youtube.com/watch?v=zaNUFmhD5PM">https://www.youtube.com/watch?v=zaNUFmhD5PM</a>
+<a href="https://www.youtube.com/watch?v=G7sxV2G-OEo">https://www.youtube.com/watch?v=G7sxV2G-OEo</a></li></ol><ol type="1" id="9948dd33-6b6b-45f8-a3de-e00de0899bab" class="numbered-list" start="3"><li>La matematica alla Pixar: <a href="https://www.youtube.com/watch?v=mX0NB9IyYpU&amp;t=10s">https://www.youtube.com/watch?v=mX0NB9IyYpU&amp;t=10s</a></li></ol><ol type="1" id="20ccdd1a-16d5-4b50-afc5-f6a56ab0847f" class="numbered-list" start="4"><li>I <em>computer</em> e la matematica alla Pixar: <a href="https://www.youtube.com/watch?v=2NzTAaYgk4Q">https://www.youtube.com/watch?v=2NzTAaYgk4Q</a></li></ol></div></div><p id="dee4d3ac-d3d5-4052-b0d5-74e809aa1843" class="">
+</p><p id="0c47959a-c25e-44df-a17c-a24cc715326f" class="">
+</p><h3 id="1d150814-4362-4d1a-a8ba-e9444182dc4f" class="">Concludendo:</h3><blockquote id="6ada6e6f-6502-4b44-b272-6e1b6dfe5be4" class="">Il<strong> calcolo numerico</strong> permette di risolvere problemi matematici che non hanno soluzioni analitiche, o approssimare quelli che sono troppo complicati. E questi problemi matematici si trovano in ogni disciplina scientifica: dalla fisica alla biologia e la medicina. <p id="c69a327e-5d5e-4425-a59d-089db35c717b" class="">Ma il calcolo numerico, come abbiamo visto, è fondamentale in innumerevoli situazioni, anche pratiche e quotidiane. Offre strumenti per realizzare e studiare varie tipologie di curve e superfici, applicabili in svariati contesti. Ha rivoluzionato l’animazione e il rendering, e ha reso possibile realizzare accurate simulazioni fisiche, e ha formato le fondamenta per il<em> machine learning</em>. </p><p id="4f0104cc-5fb9-4bef-9393-0383b61ed344" class="">Ecco perché i metodi del calcolo numerico sono così importanti.</p></blockquote><p id="2cdace0f-b7d9-413f-a82d-57828596d9dd" class="">
+</p><blockquote id="0647a4bd-bee3-4deb-9072-35298ddd4e7a" class="">Concludiamo (<em>veramente</em>) la lezione 3:</blockquote><p id="a0d9422d-3bba-4c84-92ca-6639e433d9a2" class="">Avete dei dubbi su quello che abbiamo visto in questa lezione? Quale argomento avete capito meglio? E quale peggio? <strong>Scrivetelo qui</strong>: <a href="http://scrumblr.ca/lezione03_calcolo_numerico0822">http://scrumblr.ca/lezione03_calcolo_numerico0822</a></p><p id="793cd0eb-9f74-4219-92ff-0c5242b5c7eb" class=""><em>Immagine di testata: </em><a href="https://webb.nasa.gov/"><em>Webb Space Telescope</em></a><em> (NASA, ESA, CSA,  STScI)</em></p></div></article></body></html>
