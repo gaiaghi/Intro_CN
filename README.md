@@ -1,5 +1,5 @@
 # Intro_CN
-##I limiti del computer: introduzione al Calcolo Numerico
+''I limiti del computer: introduzione al Calcolo Numerico'' - 
 Progetto per l'esame di Didattica dell'Informatica a.a. 2021/2022 (UNIBO).
 
 I materiali sono organizzati nel seguente modo:
