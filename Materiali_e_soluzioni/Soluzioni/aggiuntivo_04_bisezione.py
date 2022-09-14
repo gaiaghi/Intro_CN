@@ -22,7 +22,7 @@ def bisezione(f, a, b, n):
     print("\t[a, \t m,\t b] \t\t f(a) \t f(m)) \t f(b)")
     print("%10.6f %10.6f %10.6f %10.6f %10.6f %10.6f" %(a,m,b, fa,fm,fb))
     
-    for i in range(5):
+    for i in range(n):
         if(fm == 0): # soluzione esatta trovata
             print("Radice trovata!")
             break
